@@ -2,14 +2,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MagicBox<String> magicBox1 = new MagicBox<>();
+        MagicBox<String> magicBox1 = new MagicBox<>(4);
 
         magicBox1.add("Колбаса");
         magicBox1.add("Хлеб");
         magicBox1.add("Картошка");
         magicBox1.add("Вино");
 
-        MagicBox<Integer> magicBox2 = new MagicBox<>();
+        MagicBox<Integer> magicBox2 = new MagicBox<>(4);
 
         magicBox2.add(8000);
         magicBox2.add(752);

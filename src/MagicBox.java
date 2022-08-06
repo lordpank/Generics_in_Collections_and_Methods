@@ -2,9 +2,13 @@ import java.util.Random;
 
 public class MagicBox<T> {
 
-
-    public T[] items = (T[]) new Object[4];
+    private final Random random = new Random();
+    protected T[] items;
     private int itemCnt = 0;
+
+    public MagicBox(int number) {
+        items = (T[]) new Object[number];
+    }
 
     public boolean add(T item) {
         if (items.length > itemCnt) {
@@ -15,15 +19,9 @@ public class MagicBox<T> {
     }
 
     public T pick() throws RuntimeException {
-        int freeSlots = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] == null) {
-                freeSlots += 1;
-                throw new RuntimeException("Коробочка не полна" + freeSlots);
-            }
+        if (items.length > itemCnt) {
+            throw new RuntimeException("Коробка не полна" + " " + "Свободно" + " " + (items.length - itemCnt));
         }
-        Random random = new Random();
-        int randomInt = random.nextInt(items.length);
-        return items[randomInt];
+        return items[random.nextInt(items.length)];
     }
 }
